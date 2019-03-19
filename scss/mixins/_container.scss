@@ -1,0 +1,18 @@
+@mixin container {
+  box-sizing: border-box;
+}
+
+@mixin container-width {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+@mixin container-padding {
+  padding: 0 $spacer-3;
+  @include breakpoint(md) {
+    padding: 0 $spacer-5;
+  }
+  @include breakpoint(lg) {
+    padding: 0 $spacer-7;
+  }
+}

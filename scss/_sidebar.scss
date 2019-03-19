@@ -1,0 +1,35 @@
+/* stylelint-disable declaration-no-important */
+
+.sidebar {
+  border-bottom: $separator;
+  @include breakpoint(md) {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: $zindex-fixed - 1;
+    display: inherit !important;
+    width: $sidebar-width-md;
+    padding-bottom: env(safe-area-inset-bottom);
+    overflow-y: scroll;
+    border-right: $separator;
+    border-bottom: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  @include breakpoint(lg) {
+    width: $sidebar-width-lg;
+  }
+
+  &-under-navbar {
+    top: $navbar-height;
+    display: none;
+  }
+}
+
+.container-beside-sidebar {
+  @include breakpoint(md) {
+    margin-left: $sidebar-width-md;
+  }
+  @include breakpoint(lg) {
+    margin-left: $sidebar-width-lg;
+  }
+}

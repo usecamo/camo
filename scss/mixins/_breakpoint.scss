@@ -1,0 +1,20 @@
+$breakpoints: (
+  sm: $width-sm,
+  md: $width-md,
+  lg: $width-lg,
+  xl: $width-xl
+) !default;
+
+@mixin breakpoint($breakpoint) {
+  @if $breakpoint == "" {
+    @content;
+  }
+  @else {
+    $value: map-get($breakpoints, $breakpoint);
+    @if $value != null {
+      @media (min-width: $value) {
+        @content;
+      }
+    }
+  }
+}

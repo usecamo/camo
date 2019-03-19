@@ -1,0 +1,6 @@
+{
+  "extends": "camo",
+  "env": {
+    "browser": true
+  }
+}

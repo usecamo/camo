@@ -1,0 +1,34 @@
+language: node_js
+node_js:
+  - "11"
+  - "10"
+cache: npm
+before_install:
+  - nvm install-latest-npm
+script:
+  - npm run lint
+  - npm test
+  - npm run build
+jobs:
+  include:
+    - stage: deploying to npm
+      node_js: "11"
+      script: echo "Deploying to npm ..."
+      deploy:
+        provider: npm
+        email: $NPM_EMAIL
+        api_key: $NPM_API_KEY
+        on:
+          branch: master
+    - stage: upload dist to github releases
+      node_js: "11"
+      script:
+        - npm run build
+        - echo "Upload dist to GitHub Releases ..."
+      deploy:
+        provider: releases
+        api_key: $GITHUB_OAUTH_TOKEN
+        file: "dist/camo-$TRAVIS_TAG-dist.zip"
+        skip_cleanup: true
+        on:
+          tags: true

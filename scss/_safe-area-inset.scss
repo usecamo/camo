@@ -1,0 +1,14 @@
+.safe-area-inset {
+  &-x {
+    margin-right: env(safe-area-inset-right);
+    margin-left: env(safe-area-inset-left);
+  }
+
+  &-left {
+    margin-left: env(safe-area-inset-left);
+  }
+
+  &-right {
+    margin-right: env(safe-area-inset-right);
+  }
+}

@@ -1,0 +1,15 @@
+.container {
+  @include container();
+  @include container-width();
+  @include container-padding();
+
+  &-edge-to-edge {
+    @include container();
+    @include container-width();
+  }
+
+  &-fluid {
+    @include container();
+    @include container-padding();
+  }
+}
