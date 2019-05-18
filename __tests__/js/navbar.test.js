@@ -149,6 +149,15 @@ describe('Navbar', () => {
 
   describe('hideTargets', () => {
 
+    it('does not throw error without toggle', () => {
+      const dom = new JSDOM('<nav class="navbar"></nav>');
+      const document = dom.window.document;
+      const navbarElement = document.querySelector('.navbar');
+      const navbar = new Navbar(navbarElement);
+
+      expect(() => navbar.hideTargets()).not.toThrow(TypeError);
+    });
+
     it('does not throw error without targets', () => {
       const dom = new JSDOM(`
         <nav class="navbar">
@@ -160,6 +169,22 @@ describe('Navbar', () => {
       const navbar = new Navbar(navbarElement);
 
       expect(() => navbar.hideTargets()).not.toThrow(TypeError);
+    });
+
+    it('sets value of aria-expanded attribute to false', () => {
+      const dom = new JSDOM(`
+        <nav class="navbar">
+          <button class="navbar-toggle"></button>
+        </nav>
+      `);
+      const document = dom.window.document;
+      const navbarElement = document.querySelector('.navbar');
+      const navbar = new Navbar(navbarElement);
+      const navbarToggleElement = document.querySelector('.navbar-toggle');
+
+      navbar.hideTargets();
+
+      expect(navbarToggleElement.getAttribute('aria-expanded')).toEqual('false');
     });
 
     it('hides targets and dropdowns', () => {
@@ -202,6 +227,15 @@ describe('Navbar', () => {
 
   describe('displayTargets', () => {
 
+    it('does not throw error without toggle', () => {
+      const dom = new JSDOM('<nav class="navbar"></nav>');
+      const document = dom.window.document;
+      const navbarElement = document.querySelector('.navbar');
+      const navbar = new Navbar(navbarElement);
+
+      expect(() => navbar.displayTargets()).not.toThrow(TypeError);
+    });
+
     it('does not throw error without targets', () => {
       const dom = new JSDOM(`
         <nav class="navbar">
@@ -213,6 +247,22 @@ describe('Navbar', () => {
       const navbar = new Navbar(navbarElement);
 
       expect(() => navbar.displayTargets()).not.toThrow(TypeError);
+    });
+
+    it('sets value of aria-expanded attribute to true', () => {
+      const dom = new JSDOM(`
+        <nav class="navbar">
+          <button class="navbar-toggle"></button>
+        </nav>
+      `);
+      const document = dom.window.document;
+      const navbarElement = document.querySelector('.navbar');
+      const navbar = new Navbar(navbarElement);
+      const navbarToggleElement = document.querySelector('.navbar-toggle');
+
+      navbar.displayTargets();
+
+      expect(navbarToggleElement.getAttribute('aria-expanded')).toEqual('true');
     });
 
     it('displays targets', () => {

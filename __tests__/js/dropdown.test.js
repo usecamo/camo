@@ -88,15 +88,46 @@ describe('Dropdown', () => {
 
   describe('hideContent', () => {
 
-    it('does not throw error without content', () => {
+    it('does not throw error without toggle', () => {
       const dom = new JSDOM(`
-        <li class="dropdown"></li>
+        <li class="dropdown">
+          <div class="dropdown-content"></div>
+        </li>
       `);
       const document = dom.window.document;
       const dropdownElement = document.querySelector('.dropdown');
       const dropdown = new Dropdown(dropdownElement);
 
       expect(() => dropdown.hideContent()).not.toThrow(TypeError);
+    });
+
+    it('does not throw error without content', () => {
+      const dom = new JSDOM(`
+        <li class="dropdown">
+          <button class="dropdown-toggle"></button>
+        </li>
+      `);
+      const document = dom.window.document;
+      const dropdownElement = document.querySelector('.dropdown');
+      const dropdown = new Dropdown(dropdownElement);
+
+      expect(() => dropdown.hideContent()).not.toThrow(TypeError);
+    });
+
+    it('sets value of aria-expanded attribute to false', () => {
+      const dom = new JSDOM(`
+        <li class="dropdown">
+          <button class="dropdown-toggle"></button>
+        </li>
+      `);
+      const document = dom.window.document;
+      const dropdownElement = document.querySelector('.dropdown');
+      const dropdown = new Dropdown(dropdownElement);
+      const dropdownToggleElement = dropdownElement.querySelector('.dropdown-toggle');
+
+      dropdown.hideContent();
+
+      expect(dropdownToggleElement.getAttribute('aria-expanded')).toEqual('false');
     });
 
     it('sets none for display style', () => {
@@ -134,15 +165,46 @@ describe('Dropdown', () => {
 
   describe('displayContent', () => {
 
-    it('does not throw error without content', () => {
+    it('does not throw error without toggle', () => {
       const dom = new JSDOM(`
-        <li class="dropdown"></li>
+        <li class="dropdown">
+          <div class="dropdown-content"></div>
+        </li>
       `);
       const document = dom.window.document;
       const dropdownElement = document.querySelector('.dropdown');
       const dropdown = new Dropdown(dropdownElement);
 
       expect(() => dropdown.displayContent()).not.toThrow(TypeError);
+    });
+
+    it('does not throw error without content', () => {
+      const dom = new JSDOM(`
+        <li class="dropdown">
+          <button class="dropdown-toggle"></button>
+        </li>
+      `);
+      const document = dom.window.document;
+      const dropdownElement = document.querySelector('.dropdown');
+      const dropdown = new Dropdown(dropdownElement);
+
+      expect(() => dropdown.displayContent()).not.toThrow(TypeError);
+    });
+
+    it('sets value of aria-expanded attribute to true', () => {
+      const dom = new JSDOM(`
+        <li class="dropdown">
+          <button class="dropdown-toggle"></button>
+        </li>
+      `);
+      const document = dom.window.document;
+      const dropdownElement = document.querySelector('.dropdown');
+      const dropdown = new Dropdown(dropdownElement);
+      const dropdownToggleElement = dropdownElement.querySelector('.dropdown-toggle');
+
+      dropdown.displayContent();
+
+      expect(dropdownToggleElement.getAttribute('aria-expanded')).toEqual('true');
     });
 
     it('sets block for display style', () => {

@@ -52,11 +52,19 @@ export class Navbar {
   }
 
   hideTargets(element) {
+    if (this.toggle) {
+      this.toggle.setAttribute('aria-expanded', 'false');
+    }
+
     this.targets(element).forEach(target => Manipulator.hide(target));
     this.dropdowns.forEach(dropdown => dropdown.hideContent());
   }
 
   displayTargets(element) {
+    if (this.toggle) {
+      this.toggle.setAttribute('aria-expanded', 'true');
+    }
+
     this.targets(element).forEach(target => Manipulator.display(target, Display.BLOCK));
   }
 }

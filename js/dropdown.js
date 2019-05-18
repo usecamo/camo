@@ -28,10 +28,18 @@ export class Dropdown {
   }
 
   hideContent() {
+    if (this.toggle) {
+      this.toggle.setAttribute('aria-expanded', 'false');
+    }
+
     Manipulator.hide(this.content);
   }
 
   displayContent() {
+    if (this.toggle) {
+      this.toggle.setAttribute('aria-expanded', 'true');
+    }
+
     Manipulator.display(this.content, Display.BLOCK);
   }
 }
