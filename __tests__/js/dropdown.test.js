@@ -27,6 +27,48 @@ describe('Dropdown', () => {
     expect(dropdown.content).toBe(contentElement);
   });
 
+  describe('opened', () => {
+
+    it('returns true when display style is block', () => {
+      const dom = new JSDOM(`
+        <li class="dropdown">
+          <div class="dropdown-content" style="display: block;"></div>
+        </li>
+      `);
+      const document = dom.window.document;
+      const dropdownElement = document.querySelector('.dropdown');
+      const dropdown = new Dropdown(dropdownElement);
+
+      expect(dropdown.opened).toBeTruthy();
+    });
+
+    it('returns false when display style does not exist', () => {
+      const dom = new JSDOM(`
+        <li class="dropdown">
+          <div class="dropdown-content" style=""></div>
+        </li>
+      `);
+      const document = dom.window.document;
+      const dropdownElement = document.querySelector('.dropdown');
+      const dropdown = new Dropdown(dropdownElement);
+
+      expect(dropdown.opened).toBeFalsy();
+    });
+
+    it('returns false when display style is not block', () => {
+      const dom = new JSDOM(`
+        <li class="dropdown">
+          <div class="dropdown-content" style="display: none;"></div>
+        </li>
+      `);
+      const document = dom.window.document;
+      const dropdownElement = document.querySelector('.dropdown');
+      const dropdown = new Dropdown(dropdownElement);
+
+      expect(dropdown.opened).toBeFalsy();
+    });
+  });
+
   describe('toggleContent', () => {
 
     it('does not throw error without content', () => {

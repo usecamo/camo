@@ -15,6 +15,10 @@ export class Dropdown {
     this.content = element.querySelector('.dropdown-content');
   }
 
+  get opened() {
+    return this.content.style.display === Display.BLOCK;
+  }
+
   toggleContent() {
     if (!this.content) {
       return;
