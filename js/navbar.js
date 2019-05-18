@@ -12,10 +12,10 @@ import { Dropdown } from './dropdown';
 export class Navbar {
 
   constructor(element) {
-    const toggle = element.querySelector('.navbar-toggle');
+    this.toggle = element.querySelector('.navbar-toggle');
 
-    if (toggle) {
-      const targetAttribute = toggle.getAttribute('target');
+    if (this.toggle) {
+      const targetAttribute = this.toggle.getAttribute('target');
 
       if (targetAttribute) {
         this.targetIds = targetAttribute.split(' ');
@@ -52,11 +52,19 @@ export class Navbar {
   }
 
   hideTargets(element) {
+    if (this.toggle) {
+      this.toggle.setAttribute('aria-expanded', 'false');
+    }
+
     this.targets(element).forEach(target => Manipulator.hide(target));
     this.dropdowns.forEach(dropdown => dropdown.hideContent());
   }
 
   displayTargets(element) {
+    if (this.toggle) {
+      this.toggle.setAttribute('aria-expanded', 'true');
+    }
+
     this.targets(element).forEach(target => Manipulator.display(target, Display.BLOCK));
   }
 }

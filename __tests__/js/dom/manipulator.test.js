@@ -15,7 +15,7 @@ describe('Manipulator', () => {
       expect(() => Manipulator.hide(null)).not.toThrow(TypeError);
     });
 
-    it('sets none for display style', () => {
+    it('sets value of display style to none', () => {
       const element = { style: {} };
 
       Manipulator.hide(element);
@@ -30,7 +30,7 @@ describe('Manipulator', () => {
       expect(() => Manipulator.display(null)).not.toThrow(TypeError);
     });
 
-    it('sets display style', () => {
+    it('sets value of display style to block', () => {
       const element = { style: {} };
 
       Manipulator.display(element, Display.BLOCK);
