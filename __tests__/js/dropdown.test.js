@@ -29,7 +29,7 @@ describe('Dropdown', () => {
 
   describe('opened', () => {
 
-    it('returns true when display style is block', () => {
+    it('returns true when value of display style is block', () => {
       const dom = new JSDOM(`
         <li class="dropdown">
           <div class="dropdown-content" style="display: block;"></div>
@@ -55,7 +55,7 @@ describe('Dropdown', () => {
       expect(dropdown.opened).toBeFalsy();
     });
 
-    it('returns false when display style is not block', () => {
+    it('returns false when value of display style is not block', () => {
       const dom = new JSDOM(`
         <li class="dropdown">
           <div class="dropdown-content" style="display: none;"></div>
@@ -113,7 +113,7 @@ describe('Dropdown', () => {
       expect(dropdownToggleElement.getAttribute('aria-expanded')).toEqual('false');
     });
 
-    it('sets none for display style', () => {
+    it('sets value of display style to none', () => {
       const dom = new JSDOM(`
         <li class="dropdown">
           <div class="dropdown-content"></div>
@@ -129,7 +129,7 @@ describe('Dropdown', () => {
       expect(dropdownContentElement.style.display).toEqual('none');
     });
 
-    it('overrides display style with none', () => {
+    it('overrides value of display style with none', () => {
       const dom = new JSDOM(`
         <li class="dropdown">
           <div class="dropdown-content" style="display: block;"></div>
@@ -190,7 +190,7 @@ describe('Dropdown', () => {
       expect(dropdownToggleElement.getAttribute('aria-expanded')).toEqual('true');
     });
 
-    it('sets block for display style', () => {
+    it('sets value of display style to block', () => {
       const dom = new JSDOM(`
         <li class="dropdown">
           <div class="dropdown-content"></div>
@@ -206,7 +206,7 @@ describe('Dropdown', () => {
       expect(dropdownContentElement.style.display).toEqual('block');
     });
 
-    it('overrides display style with block', () => {
+    it('overrides value of display style with block', () => {
       const dom = new JSDOM(`
         <li class="dropdown">
           <div class="dropdown-content" style="display: none;"></div>

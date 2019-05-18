@@ -9,7 +9,7 @@ import { Event, EventHandler } from '../../../js/dom/eventHandler';
 
 describe('EventHandler', () => {
 
-  it('adds event listener', () => {
+  it('adds an event listener', () => {
     const element = { addEventListener: jest.fn() };
     const handler = () => {};
 
