@@ -19,7 +19,7 @@ jobs:
         email: $NPM_EMAIL
         api_key: $NPM_API_KEY
         on:
-          branch: master
+          tags: true
     - stage: upload dist to github releases
       node_js: "11"
       script:
