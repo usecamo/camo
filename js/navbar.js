@@ -12,10 +12,10 @@ import { Dropdown } from './dropdown';
 export class Navbar {
 
   constructor(element) {
-    const toggle = element.querySelector('.navbar-toggle');
+    this.toggle = element.querySelector('.navbar-toggle');
 
-    if (toggle) {
-      const targetAttribute = toggle.getAttribute('target');
+    if (this.toggle) {
+      const targetAttribute = this.toggle.getAttribute('target');
 
       if (targetAttribute) {
         this.targetIds = targetAttribute.split(' ');

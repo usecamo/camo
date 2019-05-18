@@ -32,11 +32,13 @@ describe('Navbar', () => {
     const document = dom.window.document;
     const navbarElement = document.querySelector('.navbar');
     const navbar = new Navbar(navbarElement);
+    const toggleElement = document.querySelector('.navbar-toggle');
     const dropdown1Element = document.getElementById('dropdown-1');
     const dropdown1 = new Dropdown(dropdown1Element);
     const dropdown2Element = document.getElementById('dropdown-2');
     const dropdown2 = new Dropdown(dropdown2Element);
 
+    expect(navbar.toggle).toBe(toggleElement);
     expect(navbar.targetIds).toEqual(['target-1', 'target-2']);
     expect(navbar.dropdowns).toEqual([dropdown1, dropdown2]);
   });

@@ -13,14 +13,18 @@ describe('Dropdown', () => {
   test('constructor', () => {
     const dom = new JSDOM(`
       <li class="dropdown">
+        <button class="dropdown-toggle"></button>
         <div class="dropdown-content"></div>
       </li>
     `);
     const document = dom.window.document;
     const dropdownElement = document.querySelector('.dropdown');
     const dropdown = new Dropdown(dropdownElement);
+    const toggleElement = document.querySelector('.dropdown-toggle');
+    const contentElement = document.querySelector('.dropdown-content');
 
-    expect(dropdown.content).toBeTruthy();
+    expect(dropdown.toggle).toBe(toggleElement);
+    expect(dropdown.content).toBe(contentElement);
   });
 
   describe('toggleContent', () => {

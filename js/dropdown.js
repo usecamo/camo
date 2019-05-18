@@ -11,6 +11,7 @@ import { Event, EventHandler } from './dom/eventHandler';
 export class Dropdown {
 
   constructor(element) {
+    this.toggle = element.querySelector('.dropdown-toggle');
     this.content = element.querySelector('.dropdown-content');
   }
 
