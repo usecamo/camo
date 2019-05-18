@@ -69,65 +69,6 @@ describe('Dropdown', () => {
     });
   });
 
-  describe('toggleContent', () => {
-
-    it('does not throw error without content', () => {
-      const dom = new JSDOM(`
-        <li class="dropdown"></li>
-      `);
-      const document = dom.window.document;
-      const dropdownElement = document.querySelector('.dropdown');
-      const dropdown = new Dropdown(dropdownElement);
-
-      expect(() => dropdown.toggleContent()).not.toThrow(TypeError);
-    });
-
-    it('sets block for display style when it does not exists', () => {
-      const dom = new JSDOM(`
-        <li class="dropdown">
-          <div class="dropdown-content"></div>
-        </li>
-      `);
-      const document = dom.window.document;
-      const dropdownElement = document.querySelector('.dropdown');
-      const dropdown = new Dropdown(dropdownElement);
-
-      dropdown.toggleContent();
-
-      expect(dropdown.content.style.display).toEqual('block');
-    });
-
-    it('sets block for display style when it is none', () => {
-      const dom = new JSDOM(`
-        <li class="dropdown">
-          <div class="dropdown-content" style="display: none;"></div>
-        </li>
-      `);
-      const document = dom.window.document;
-      const dropdownElement = document.querySelector('.dropdown');
-      const dropdown = new Dropdown(dropdownElement);
-
-      dropdown.toggleContent();
-
-      expect(dropdown.content.style.display).toEqual('block');
-    });
-
-    it('sets none for display style when it is block', () => {
-      const dom = new JSDOM(`
-        <li class="dropdown">
-          <div class="dropdown-content" style="display: block;"></div>
-        </li>
-      `);
-      const document = dom.window.document;
-      const dropdownElement = document.querySelector('.dropdown');
-      const dropdown = new Dropdown(dropdownElement);
-
-      dropdown.toggleContent();
-
-      expect(dropdown.content.style.display).toEqual('none');
-    });
-  });
-
   describe('hideContent', () => {
 
     it('does not throw error without toggle', () => {
@@ -314,14 +255,30 @@ describe('setupDropdownToggleHandler', () => {
     content3 = document.querySelector('#dropdown-3 .dropdown-content');
   });
 
-  test('click dropdown toggle', () => {
+  test('click dropdown toggle to open', () => {
     const toggle = document.querySelector('#dropdown-1 .dropdown-toggle');
+
+    content2.style.display = 'block';
 
     setupDropdownToggleHandler(document);
     toggle.dispatchEvent(clickEvent);
 
     expect(content1.style.display).toEqual('block');
-    expect(content2.style.display).toBeFalsy();
+    expect(content2.style.display).toEqual('none');
+    expect(content3.style.display).toBeFalsy();
+  });
+
+  test('click dropdown toggle to close', () => {
+    const toggle = document.querySelector('#dropdown-1 .dropdown-toggle');
+
+    content1.style.display = 'block';
+    content2.style.display = 'none';
+
+    setupDropdownToggleHandler(document);
+    toggle.dispatchEvent(clickEvent);
+
+    expect(content1.style.display).toEqual('none');
+    expect(content2.style.display).toEqual('none');
     expect(content3.style.display).toBeFalsy();
   });
 
@@ -334,6 +291,6 @@ describe('setupDropdownToggleHandler', () => {
 
     expect(content1.style.display).toEqual('none');
     expect(content2.style.display).toEqual('none');
-    expect(content3.style.display).toEqual('none');
+    expect(content3.style.display).toBeFalsy();
   });
 });

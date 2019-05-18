@@ -19,18 +19,6 @@ export class Dropdown {
     return this.content.style.display === Display.BLOCK;
   }
 
-  toggleContent() {
-    if (!this.content) {
-      return;
-    }
-
-    if (this.content.style.display === Display.BLOCK) {
-      this.hideContent();
-    } else {
-      this.displayContent();
-    }
-  }
-
   hideContent() {
     if (this.toggle) {
       this.toggle.setAttribute('aria-expanded', 'false');
@@ -51,6 +39,8 @@ export class Dropdown {
 export function setupDropdownToggleHandler(element) {
   EventHandler.on(element, Event.CLICK, event => {
     const toggle = event.target.closest('.dropdown-toggle');
+    const dropdownElements = element.getElementsByClassName('dropdown');
+    const dropdowns = Array.prototype.map.call(dropdownElements, element => new Dropdown(element));
 
     if (toggle) {
       const dropdownElement = toggle.closest('.dropdown');
@@ -61,12 +51,24 @@ export function setupDropdownToggleHandler(element) {
 
       const dropdown = new Dropdown(dropdownElement);
 
-      dropdown.toggleContent();
+      if (dropdown.opened) {
+        dropdown.hideContent();
+      } else {
+        dropdown.displayContent();
+        dropdowns
+          .filter(dropdown => dropdown.toggle !== toggle)
+          .forEach(dropdown => {
+            if (dropdown.opened) {
+              dropdown.hideContent();
+            }
+          });
+      }
     } else {
-      const dropdownElements = element.getElementsByClassName('dropdown');
-      const dropdowns = Array.prototype.map.call(dropdownElements, element => new Dropdown(element));
-
-      dropdowns.forEach(dropdown => dropdown.hideContent());
+      dropdowns.forEach(dropdown => {
+        if (dropdown.opened) {
+          dropdown.hideContent();
+        }
+      });
     }
   });
 }
