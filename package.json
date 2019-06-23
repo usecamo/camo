@@ -20,7 +20,7 @@
   "scripts": {
     "build": "gulp",
     "lint": "run-p lint:*",
-    "lint:js": "eslint js __tests__ build gulpfile.babel.js",
+    "lint:js": "eslint babel.config.js js __tests__ build gulpfile.babel.js",
     "lint:scss": "stylelint scss",
     "test": "jest"
   },
