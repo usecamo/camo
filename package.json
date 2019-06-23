@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/usecamo/camo/issues"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "js/index.js",
   "files": [
     "js/**/*.js",
@@ -20,7 +20,7 @@
   "scripts": {
     "build": "gulp",
     "lint": "run-p lint:*",
-    "lint:js": "eslint js __tests__ build gulpfile.babel.js",
+    "lint:js": "eslint babel.config.js js __tests__ build gulpfile.babel.js",
     "lint:scss": "stylelint scss",
     "test": "jest"
   },
@@ -28,14 +28,14 @@
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
+    "@babel/core": "^7.4.5",
     "@babel/register": "^7.0.0",
-    "babel-preset-usecamo": "^0.1.1",
+    "babel-preset-usecamo": "^0.1.4",
     "del": "^4.0.0",
-    "eslint": "^5.15.3",
-    "eslint-config-camo": "^0.2.3",
-    "eslint-plugin-eslint-comments": "^3.1.1",
-    "eslint-plugin-jest": "^22.4.1",
+    "eslint": "^5.16.0",
+    "eslint-config-camo": "^0.2.4",
+    "eslint-plugin-eslint-comments": "^3.1.2",
+    "eslint-plugin-jest": "^22.7.1",
     "gulp": "^4.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
@@ -46,10 +46,10 @@
     "npm-run-all": "^4.1.5",
     "rollup": "^1.6.0",
     "stylelint": "^9.10.1",
-    "stylelint-config-camo": "^0.1.1",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-order": "^2.1.0",
-    "stylelint-scss": "^3.5.4",
+    "stylelint-config-camo": "^0.1.2",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-order": "^2.2.1",
+    "stylelint-scss": "^3.8.0",
     "tar": "^4.4.8",
     "terser": "^3.17.0"
   },

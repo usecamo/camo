@@ -19,6 +19,8 @@
   }
 
   &-header {
+    overflow-x: hidden;
+
     @each $container in $containers {
       #{$container} {
         display: flex;
