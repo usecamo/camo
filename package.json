@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/usecamo/camo/issues"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "js/index.js",
   "files": [
     "js/**/*.js",
