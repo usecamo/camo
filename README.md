@@ -1,4 +1,4 @@
-# Camo
+# camo
 
 [![npm version](https://img.shields.io/npm/v/@usecamo/camo.svg)](https://npmjs.com/package/@usecamo/camo)
 [![travis-ci build status](https://travis-ci.com/usecamo/camo.svg?branch=master)](https://travis-ci.com/usecamo/camo)
@@ -22,4 +22,4 @@ Download from [releases](https://github.com/usecamo/camo/releases).
 
 ## License
 
-Camo is released under the MIT license. [See LICENSE](https://github.com/usecamo/camo/blob/master/LICENSE) for details.
+camo is released under the MIT license. [See LICENSE](https://github.com/usecamo/camo/blob/master/LICENSE) for details.
